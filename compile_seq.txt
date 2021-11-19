@@ -1,0 +1,2 @@
+$ module load intel-parallel-studio-professional.2019.4-gcc-8.2.1-fnvratt
+$ icc -W -Wall -O3 -std=c++11 2d_fft_seq_v2.0.cpp -o 2d_fft_seq
