@@ -11,4 +11,6 @@ e.g.: `./2d_fft_seq "input_file.txt" 1080 1920`
 
 The files `.slurm` contain examples of tasks scheduled on CAPRI.
 
+The files  `2d_fft_par_8_out_160865.txt` and `2d_fft_seq_out_160926.txt` contain example outputs of the program, for the parallel and sequential case respectively.
+
 Details about the project can be found in the `.pdf` report (not in the repository).
