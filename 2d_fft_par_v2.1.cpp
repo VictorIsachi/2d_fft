@@ -78,10 +78,10 @@ std::vector<std::complex<float>> compute_fft(std::vector<std::complex<float>> in
 	N = static_cast<int>(input.size());
 	std::vector<std::complex<float>> output = bit_rev_perm(input);
 	const float pi = std::acos(-1);
-    const std::complex<float> comp_unit(0.0f, 1.0f);
-    const int log2_N = static_cast<int>(log2(N));
-    int m;
-    std::complex<float> w_m, w, u, t;
+    	const std::complex<float> comp_unit(0.0f, 1.0f);
+   	const int log2_N = static_cast<int>(log2(N));
+    	int m;
+    	std::complex<float> w_m, w, u, t;
 	for (int l = 1; l <= log2_N; l++){
 		m = static_cast<int>(exp2(l));
 		w_m = std::exp((-2*pi*comp_unit)/static_cast<float>(m));
