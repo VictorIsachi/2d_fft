@@ -14,6 +14,7 @@
 #define NUM_ITERS 10
 
 std::vector<std::complex<float>> int_to_complex(std::vector<int> input){
+	
 	std::vector<std::complex<float>> output;
 	for(size_t i = 0; i < input.size(); i++){
 		std::complex<float> element(static_cast<float>(input[i]), 0.0f);
@@ -23,6 +24,7 @@ std::vector<std::complex<float>> int_to_complex(std::vector<int> input){
 }
 
 std::vector<float> complex_to_real(std::vector<std::complex<float>> input){
+	
 	std::vector<float> output;
 	for(size_t i = 0; i < input.size(); i++){
 		float element = real(input[i]);
@@ -32,6 +34,7 @@ std::vector<float> complex_to_real(std::vector<std::complex<float>> input){
 }
 
 std::vector<float> complex_to_imag(std::vector<std::complex<float>> input){
+	
 	std::vector<float> output;
 	for(size_t i = 0; i < input.size(); i++){
 		float element = imag(input[i]);
@@ -41,6 +44,7 @@ std::vector<float> complex_to_imag(std::vector<std::complex<float>> input){
 }
 
 int compute_bit_rev(int num, int num_bits){
+	
 	int rev = 0;
 	//compute the bit reverse of num
 	for (int j = num_bits - 1; j >= 0; j--){
@@ -51,6 +55,7 @@ int compute_bit_rev(int num, int num_bits){
 }
 
 std::vector<std::complex<float>> bit_rev_perm(std::vector<std::complex<float>> input){
+	
 	int N = static_cast<int>(input.size());
 	int num_bits = static_cast<int>(log2(N));
 	std::vector<std::complex<float>> output(N);
@@ -63,6 +68,7 @@ std::vector<std::complex<float>> bit_rev_perm(std::vector<std::complex<float>> i
 }
 
 std::vector<std::complex<float>> compute_fft(std::vector<std::complex<float>> input){
+	
 	int N = static_cast<int>(input.size());
 	int pad = static_cast<int>(exp2(ceil(log2(N)))) - N;
 	const std::complex<float> comp_zero(0.0f, 0.0f);
@@ -71,13 +77,10 @@ std::vector<std::complex<float>> compute_fft(std::vector<std::complex<float>> in
 	N = static_cast<int>(input.size());
 	std::vector<std::complex<float>> output = bit_rev_perm(input);
 	const float pi = std::acos(-1);
-    const std::complex<float> comp_unit(0.0f, 1.0f);
-    const int log2_N = static_cast<int>(log2(N));
-    int m;
-    std::complex<float> w_m;
-    std::complex<float> w;
-    std::complex<float> u;
-    std::complex<float> t;
+    	const std::complex<float> comp_unit(0.0f, 1.0f);
+    	const int log2_N = static_cast<int>(log2(N));
+    	int m;
+    	std::complex<float> w_m, w, u, t;
 	for (int l = 1; l <= log2_N; l++){
 		m = static_cast<int>(exp2(l));
 		w_m = std::exp((-2*pi*comp_unit)/static_cast<float>(m));
@@ -100,6 +103,7 @@ std::vector<std::complex<float>> compute_fft(std::vector<std::complex<float>> in
 //can transpose it, access the rows, and then transpose it back
 template<typename T>
 std::vector<std::vector<T>> vector_transpose(std::vector<std::vector<T>> input){
+	
 	std::vector<std::vector<T>> output;
 	int num_rows = static_cast<int>(input.size());
 	int num_cols = static_cast<int>(input[0].size());
@@ -115,6 +119,7 @@ std::vector<std::vector<T>> vector_transpose(std::vector<std::vector<T>> input){
 
 //first index -> row; second index -> column
 std::vector<std::vector<std::complex<float>>> compute_2dfft(
+	
 	std::vector<std::vector<std::complex<float>>> input){
 	for(int row_index = 0; row_index < static_cast<int>(input.size()); row_index++){
 		input[row_index] = compute_fft(input[row_index]);
@@ -128,6 +133,7 @@ std::vector<std::vector<std::complex<float>>> compute_2dfft(
 
 //first index -> row; second index -> column
 std::vector<std::vector<std::complex<float>>> compute_2difft(
+	
 	std::vector<std::vector<std::complex<float>>> input){
 	int num_rows = static_cast<int>(input.size());
 	int num_cols = static_cast<int>(input[0].size());
